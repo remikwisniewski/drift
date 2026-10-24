@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drift · Ambient soundscapes</title>
+    <meta
+      name="description"
+      content="Mix rain, thunder, wind, waves, a campfire, crickets, birds and soft piano into your own soundscape. Every sound is synthesised live in your browser."
+    />
+    <meta name="theme-color" content="#0a0c22" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/main.css" />
+  </head>
+  <body>
+    <canvas class="scene" data-scene aria-hidden="true"></canvas>
+
+    <header class="top">
+      <p class="brand">Drift<span>ambient soundscapes</span></p>
+      <div class="top__actions">
+        <button class="ghost" type="button" data-share>
+          <span data-icon="link"></span><span data-share-label>Share mix</span>
+        </button>
+        <button class="ghost" type="button" data-about>About</button>
+      </div>
+    </header>
+
+    <main class="panel" aria-label="Sound mixer">
+      <div class="now">
+        <button class="play" type="button" data-play aria-label="Play" aria-pressed="false">
+          <span data-icon="play"></span>
+        </button>
+        <div class="now__text">
+          <p class="now__label" data-state>Press play to begin</p>
+          <p class="now__mix" data-mix-name aria-live="polite">Rainy night</p>
+        </div>
+        <p class="now__timer" data-remaining hidden></p>
+      </div>
+
+      <div class="presets" role="group" aria-label="Presets" data-presets></div>
+
+      <ul class="channels" data-channels></ul>
+
+      <div class="controls">
+        <label class="control control--volume">
+          <span data-icon="volume"></span>
+          <span class="visually-hidden">Master volume</span>
+          <input type="range" min="0" max="100" step="1" data-master />
+        </label>
+        <label class="control">
+          <span data-icon="moon"></span>
+          <span class="visually-hidden">Sleep timer</span>
+          <select data-sleep></select>
+        </label>
+        <button class="ghost" type="button" data-random><span data-icon="shuffle"></span>Surprise me</button>
+      </div>
+    </main>
+
+    <p class="hint" aria-hidden="true">
+      <kbd>Space</kbd> play or pause · <kbd>1</kbd>–<kbd>8</kbd> toggle a sound · <kbd>R</kbd> surprise me
+    </p>
+
+    <dialog class="about" data-about-dialog aria-labelledby="about-title">
+      <form method="dialog">
+        <h2 id="about-title">About Drift</h2>
+        <p>
+          Drift is a soundscape mixer for focusing, reading or falling asleep. There are no recordings: every
+          sound is made live in your browser with the Web Audio API.
+        </p>
+        <ul>
+          <li><b>Rain</b> is pink noise for the bed, with thousands of tiny filtered drops on top.</li>
+          <li><b>Thunder</b> flashes first, then rumbles a few seconds later, like the real thing.</li>
+          <li><b>Wind, waves and fire</b> are shaped noise that swells, gusts and crackles at random.</li>
+          <li><b>Crickets and birds</b> are sine tones, chirped and swept into calls.</li>
+          <li><b>Keys</b> wander through a pentatonic scale, so every note fits.</li>
+        </ul>
+        <p>
+          The scene follows the mix: rain brings clouds, birds bring the dawn, crickets bring fireflies.
+          Sounds keep playing in a background tab, and the sleep timer fades out over the last minute.
+        </p>
+        <p class="about__links">
+          Built by
+          <a href="https://www.remiwisniewski.com" target="_blank" rel="noopener">Remigiusz Wisniewski</a> ·
+          <a href="https://github.com/remikwisniewski/drift" target="_blank" rel="noopener"
+            >Source on GitHub</a
+          >
+        </p>
+        <button class="ghost" value="close">Close</button>
+      </form>
+    </dialog>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>
