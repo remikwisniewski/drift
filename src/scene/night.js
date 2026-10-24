@@ -284,7 +284,9 @@ export function createNightScene(canvas, { reducedMotion = false, seed = 7 } = {
     water.addColorStop(0, blend(skyLow, "rgb(10, 12, 26)", 0.45));
     water.addColorStop(1, "rgb(8, 10, 22)");
     ctx.fillStyle = water;
-    ctx.fillRect(0, y0, w, y1 - y0);
+    // Paint a little past the shore, under the ground's wavy edge, so no strip is
+    // left unpainted (it would collect firelight frame after frame).
+    ctx.fillRect(0, y0, w, y1 - y0 + 8);
 
     // Shimmering swell lines, taller and faster with the waves slider
     const swell = 0.25 + s.waves * 0.75;
